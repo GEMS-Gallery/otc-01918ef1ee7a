@@ -1,0 +1,30 @@
+type TradeOffer = 
+ record {
+   assetId: nat;
+   id: nat;
+   price: nat;
+   quantity: nat;
+ };
+type Result_1 = 
+ variant {
+   err: text;
+   ok: bool;
+ };
+type Result = 
+ variant {
+   err: text;
+   ok: nat;
+ };
+type Asset = 
+ record {
+   id: nat;
+   name: text;
+   quantity: nat;
+ };
+service : {
+  acceptTradeOffer: (nat) -> (Result_1);
+  createAsset: (text, nat) -> (Result);
+  createTradeOffer: (nat, nat, nat) -> (Result);
+  getAssets: () -> (vec Asset) query;
+  getTradeOffers: () -> (vec TradeOffer) query;
+}
